@@ -1,0 +1,7 @@
+MetaBoard allows one to test Artificial Intelligences (AI) over various board
+games. Adding new games is supposed to be easy, and it should be possible to
+implement AIs working on a whole class of games. This program is distributed
+under GPL license.
+
+Contact informations:
+- Fabian Pijcke <fabian.pijcke@gmail.com>
