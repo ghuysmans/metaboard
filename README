@@ -3,5 +3,12 @@ games. Adding new games is supposed to be easy, and it should be possible to
 implement AIs working on a whole class of games. This program is distributed
 under GPL license.
 
+In order to compile and launch something, just place yourself in the src
+directory and compile what you want. Example with the Chess Launcher:
+
+~ cd src
+~ javac Games/Chess/Launcher.java
+~ java Games.Chess.Launcher
+
 Contact informations:
 - Fabian Pijcke <fabian.pijcke@gmail.com>
