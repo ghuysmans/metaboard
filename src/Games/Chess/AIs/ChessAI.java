@@ -20,10 +20,12 @@
 package Games.Chess.AIs;
 
 import Core.NameAvatar;
+import Games.Chess.Game;
 import Games.Chess.IBoard;
 import Games.Chess.Move;
 import Games.Chess.Piece;
 import Move.Picking.IPickingDecisionMaker;
+import Move.Picking.RandomAI;
 import java.util.List;
 
 /**
@@ -32,7 +34,7 @@ import java.util.List;
 public abstract class ChessAI implements IPickingDecisionMaker<IBoard, Move, NameAvatar> {
     private final NameAvatar avatar;
     private IBoard board;
-    private List<Move> moves;
+    private List<Move> possibleMoves, pastMoves;
     
     public ChessAI(NameAvatar avatar) {
         this.avatar = avatar;
@@ -63,14 +65,36 @@ public abstract class ChessAI implements IPickingDecisionMaker<IBoard, Move, Nam
     
     @Override
     public final void informMoves(List<Move> moves) {
-        this.moves = moves;
+        this.possibleMoves = moves;
     }
     
     public final List<Move> getPossibleMoves() {
-        return moves;
+        return possibleMoves;
     }
 
     @Override
     public final void informEnd(List<NameAvatar> winners) {
+    }
+    
+    @Override
+    public void informPastMoves(List<Move> pastMoves) {
+        this.pastMoves = pastMoves;
+    }
+    
+    public List<Move> getPastMoves() {
+        return pastMoves;
+    }
+    
+    public Game getGameCopy() {
+        IPickingDecisionMaker white, black;
+        if (getPastMoves().size() % 2 == 0) {
+            white = this;
+            black = new RandomAI(getOpponent());
+        }
+        else {
+            white = new RandomAI(getOpponent());
+            black = this;
+        }
+        return new Game(white, black, getBoard(), getPastMoves());
     }
 }

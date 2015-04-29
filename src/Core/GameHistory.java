@@ -20,7 +20,6 @@
 package Core;
 
 import Board.IBoard;
-import Games.Chess.Move;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

@@ -34,11 +34,13 @@ import java.util.List;
 public interface IPickingGame<B extends IBoard, M extends IMove<B>, DM extends IPickingDecisionMaker<? super B, M, ?>> extends Game<B, M, DM> {
     
     public List<M> getPossibleMoves();
+    public List<M> getMoves();
     
     default void step() {
         if (isGameEnded()) {
             throw new IllegalStateException();
         }
+        getCurrentPlayer().informPastMoves(Collections.unmodifiableList(getMoves()));
         getCurrentPlayer().informMoves(Collections.unmodifiableList(getPossibleMoves()));
         M m = getCurrentPlayer().pickMove();
         applyMove(m);

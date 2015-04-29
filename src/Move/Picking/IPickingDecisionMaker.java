@@ -33,6 +33,7 @@ import java.util.List;
  */
 public interface IPickingDecisionMaker<B extends IBoardProxy, M extends IMove<? extends B>, A extends Avatar> extends IDecisionMaker<B, M, A> {
     
+    void informPastMoves(List<M> moves);
     void informMoves(List<M> moves);
     
 }

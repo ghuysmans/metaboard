@@ -34,7 +34,7 @@ import java.util.Random;
 public class RandomAI<B extends IBoardProxy, M extends IMove<? extends B>, A extends Avatar> implements IPickingDecisionMaker<B, M, A> {
     
     private final A avatar;
-    private List<M> moves;
+    private List<M> moves, pastMoves;
     private B board;
     private final Random randomizer;
     
@@ -56,6 +56,11 @@ public class RandomAI<B extends IBoardProxy, M extends IMove<? extends B>, A ext
     @Override
     public void informBoard(B board) {
         this.board = board;
+    }
+    
+    @Override
+    public void informPastMoves(List<M> moves) {
+        this.pastMoves = moves;
     }
 
     @Override

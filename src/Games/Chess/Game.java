@@ -54,7 +54,7 @@ public class Game extends GameHistory<Board, Move, IPickingDecisionMaker<IBoard,
         this.board = board;
     }
     
-    public Game(IPickingDecisionMaker<IBoard, Move, NameAvatar> white, IPickingDecisionMaker<IBoard, Move, NameAvatar> black, BoardProxy board, List<Move> moves) {
+    public Game(IPickingDecisionMaker<IBoard, Move, NameAvatar> white, IPickingDecisionMaker<IBoard, Move, NameAvatar> black, IBoard board, List<Move> moves) {
         this(white, black, new Board(board));
         
         for (Move m : moves) {
@@ -311,6 +311,7 @@ public class Game extends GameHistory<Board, Move, IPickingDecisionMaker<IBoard,
         if (isGameEnded()) {
             throw new IllegalStateException();
         }
+        getCurrentPlayer().informPastMoves(Collections.unmodifiableList(getMoves()));
         getCurrentPlayer().informBoard(new BoardProxy(getBoard()));
         getCurrentPlayer().informMoves(Collections.unmodifiableList(getPossibleMoves()));
         Move m = getCurrentPlayer().pickMove();
