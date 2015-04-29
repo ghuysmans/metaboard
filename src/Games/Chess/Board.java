@@ -34,4 +34,6 @@ public class Board extends InversibleMap2D<Piece, Coordinate> implements IBoard 
         super(w, h);
     }
     
+    // TODO getWhite() getBlack() (avatars)
+    
 }

@@ -20,7 +20,7 @@
 package Games.Chess.Pieces;
 
 import Board.Grid.GridCoordinate;
-import Core.Avatar;
+import Core.NameAvatar;
 import Games.Chess.Moves.Promotion;
 import Games.Chess.Piece;
 import Games.Chess.Coordinate;
@@ -38,7 +38,7 @@ public class Pawn extends Piece {
     
     private final int dir;
     
-    public Pawn(Avatar player, GridCoordinate initial) {
+    public Pawn(NameAvatar player, GridCoordinate initial) {
         super(player);
         dir = initial.getY() == 1 ? 1 : -1;
     }

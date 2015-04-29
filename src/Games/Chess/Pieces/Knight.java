@@ -20,7 +20,7 @@
 package Games.Chess.Pieces;
 
 import Board.Grid.GridCoordinate;
-import Core.Avatar;
+import Core.NameAvatar;
 import Games.Chess.StepPiece;
 import java.util.Arrays;
 import java.util.List;
@@ -30,7 +30,7 @@ import java.util.List;
  */
 public class Knight extends StepPiece {
     
-    public Knight(Avatar player) {
+    public Knight(NameAvatar player) {
         super(player);
     }
 

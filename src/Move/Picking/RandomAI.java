@@ -61,7 +61,7 @@ public class RandomAI<B extends IBoardProxy, M extends IMove<? extends B>, A ext
     @Override
     public M pickMove() {
         M m = moves.get(randomizer.nextInt(moves.size()));
-        if (m instanceof IResign) {
+        if (m instanceof IAuxiliaryMove) {
             return pickMove();
         }
         else {

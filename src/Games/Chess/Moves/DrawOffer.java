@@ -21,11 +21,12 @@ package Games.Chess.Moves;
 
 import Games.Chess.Board;
 import Games.Chess.Move;
+import Move.Picking.IAuxiliaryMove;
 
 /**
  * @author Fabian Pijcke
  */
-public class DrawOffer implements Move {
+public class DrawOffer implements Move, IAuxiliaryMove {
     
     @Override
     public String getNotation() {

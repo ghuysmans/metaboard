@@ -16,12 +16,12 @@
  You should have received a copy of the GNU General Public License
  along with MetaBoard. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package Move.Picking;
 
 /**
- * @author Fabian Pijcke
+ *
+ * @author shepard
  */
-public interface IResign {
+public interface IAuxiliaryMove {
     
 }

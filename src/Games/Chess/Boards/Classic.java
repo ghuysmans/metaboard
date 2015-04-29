@@ -19,7 +19,6 @@
 
 package Games.Chess.Boards;
 
-import Core.Avatar;
 import Core.NameAvatar;
 import Games.Chess.Board;
 import Games.Chess.Coordinate;
@@ -44,7 +43,7 @@ public class Classic extends Board {
         
         for (int i = 0; i < 2; ++i) {
             int row = i * 7;
-            Avatar player = avatars[i];
+            NameAvatar player = avatars[i];
 
             setPieceAt(new Coordinate(0, row), new Rook(player));
             setPieceAt(new Coordinate(1, row), new Knight(player));

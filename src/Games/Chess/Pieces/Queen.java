@@ -20,7 +20,7 @@
 package Games.Chess.Pieces;
 
 import Board.Grid.GridCoordinate;
-import Core.Avatar;
+import Core.NameAvatar;
 import Games.Chess.LinearPiece;
 import java.util.Arrays;
 import java.util.List;
@@ -30,7 +30,7 @@ import java.util.List;
  */
 public class Queen extends LinearPiece {
 
-    public Queen(Avatar player) {
+    public Queen(NameAvatar player) {
         super(player);
     }
 

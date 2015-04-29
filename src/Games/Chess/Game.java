@@ -32,6 +32,7 @@ import Core.GameHistory;
 import Core.NameAvatar;
 import Games.Chess.Moves.PawnLeap;
 import Games.Chess.Moves.Promotion;
+import Move.Picking.IAuxiliaryMove;
 import Move.Picking.IPickingDecisionMaker;
 import Move.Picking.IPickingGame;
 import java.util.ArrayList;
@@ -67,7 +68,16 @@ public class Game extends GameHistory<Board, Move, IPickingDecisionMaker<IBoard,
     }
     
     public boolean isCheckMate() {
-        return inCheck(getCurrentPlayer().getAvatar()) && getPossibleMoves(getCurrentPlayer().getAvatar()).isEmpty();
+        if (!inCheck(getCurrentPlayer().getAvatar()))
+            return false;
+        
+        for (Move m : getPossibleMoves(getCurrentPlayer().getAvatar())) {
+            if (!(m instanceof IAuxiliaryMove)) {
+                return false;
+            }
+        }
+        
+        return true;
     }
     
     public boolean hasResign() {
@@ -75,7 +85,13 @@ public class Game extends GameHistory<Board, Move, IPickingDecisionMaker<IBoard,
     }
     
     public boolean isStalemate() {
-        return getPossibleMoves().isEmpty();
+        for (Move m : getPossibleMoves(getCurrentPlayer().getAvatar())) {
+            if (!(m instanceof IAuxiliaryMove)) {
+                return false;
+            }
+        }
+        
+        return true;
     }
     
     public boolean isAcceptedDraw() {
@@ -280,6 +296,17 @@ public class Game extends GameHistory<Board, Move, IPickingDecisionMaker<IBoard,
         else {
             System.out.println("???");
         }
+    }
+    
+    @Override
+    public void step() {
+        if (isGameEnded()) {
+            throw new IllegalStateException();
+        }
+        getCurrentPlayer().informBoard(new BoardProxy(getBoard()));
+        getCurrentPlayer().informMoves(Collections.unmodifiableList(getPossibleMoves()));
+        Move m = getCurrentPlayer().pickMove();
+        applyMove(m);
     }
 
 }

@@ -33,6 +33,7 @@ public class FirstMove extends ChessAI {
 
     @Override
     public Move pickMove() {
+        System.out.println(getBoard());
         return getPossibleMoves().get(0);
     }
     

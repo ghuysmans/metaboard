@@ -22,6 +22,7 @@ package Games.Chess.AIs;
 import Core.NameAvatar;
 import Games.Chess.IBoard;
 import Games.Chess.Move;
+import Games.Chess.Piece;
 import Move.Picking.IPickingDecisionMaker;
 import java.util.List;
 
@@ -40,6 +41,15 @@ public abstract class ChessAI implements IPickingDecisionMaker<IBoard, Move, Nam
     @Override
     public final NameAvatar getAvatar() {
         return avatar;
+    }
+    
+    public final NameAvatar getOpponent() {
+        for (Piece p : getBoard().getPieces()) {
+            if (p.getAvatar() != getAvatar()) {
+                return p.getAvatar();
+            }
+        }
+        return null;
     }
     
     @Override

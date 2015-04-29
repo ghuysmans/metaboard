@@ -21,6 +21,7 @@ package Games.Chess;
 
 import Board.Grid.GridCoordinate;
 import Core.Avatar;
+import Core.NameAvatar;
 import Games.Chess.Moves.BasicMove;
 import Piece.Owned.OwnedPiece;
 import java.util.List;
@@ -30,16 +31,16 @@ import java.util.List;
  */
 public abstract class Piece implements OwnedPiece<Avatar> {
     
-    private final Avatar avatar;
+    private final NameAvatar avatar;
     
-    public Piece(Avatar avatar) {
+    public Piece(NameAvatar avatar) {
         this.avatar = avatar;
     }
     
     public abstract List<GridCoordinate> getDirections();
     
     @Override
-    public Avatar getAvatar() {
+    public NameAvatar getAvatar() {
         return avatar;
     }
     
