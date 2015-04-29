@@ -20,7 +20,9 @@
 package Core;
 
 import Board.IBoard;
+import Games.Chess.Move;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -48,7 +50,7 @@ public abstract class GameHistory<B extends IBoard, M extends IMove<B>, DM exten
     @Override
     public void applyMove(M m) {
         Game.super.applyMove(m);
-        moves.add(m);
+        addMove(m);
     }
     
     public int getTurn() {
@@ -72,4 +74,11 @@ public abstract class GameHistory<B extends IBoard, M extends IMove<B>, DM exten
         return (index < 0 || index >= getTurn()) ? null : moves.get(index);
     }
     
+    public void addMove(M m) {
+        moves.add(m);
+    }
+    
+    public List<M> getMoves() {
+        return Collections.unmodifiableList(moves);
+    }
 }

@@ -54,6 +54,14 @@ public class Game extends GameHistory<Board, Move, IPickingDecisionMaker<IBoard,
         this.board = board;
     }
     
+    public Game(IPickingDecisionMaker<IBoard, Move, NameAvatar> white, IPickingDecisionMaker<IBoard, Move, NameAvatar> black, BoardProxy board, List<Move> moves) {
+        this(white, black, new Board(board));
+        
+        for (Move m : moves) {
+            addMove(m);
+        }
+    }
+    
     public IPickingDecisionMaker<IBoard, Move, NameAvatar> getWhite() {
         return getPlayers().get(0);
     }

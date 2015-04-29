@@ -30,19 +30,12 @@ import java.util.List;
  */
 public class King extends StepPiece {
     
-    private boolean moved;
-    
     public King(NameAvatar player) {
         this(player, false);
     }
     
     public King(NameAvatar player, boolean moved) {
         super(player);
-        this.moved = moved;
-    }
-    
-    public boolean hasMoved() {
-        return moved;
     }
     
     @Override

@@ -34,6 +34,9 @@ public class Board extends InversibleMap2D<Piece, Coordinate> implements IBoard 
         super(w, h);
     }
     
-    // TODO getWhite() getBlack() (avatars)
+    public Board(IBoard b) {
+        super(b.getWidth(), b.getHeight());
+        b.getPieces().forEach(p -> setPieceAt(b.getCoordinate(p), p));
+    }
     
 }
