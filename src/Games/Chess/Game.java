@@ -306,14 +306,24 @@ public class Game extends GameHistory<Board, Move, IPickingDecisionMaker<IBoard,
         }
     }
     
+    private void informPlayer() {
+        getCurrentPlayer().informPastMoves(Collections.unmodifiableList(getMoves()));
+        getCurrentPlayer().informBoard(new BoardProxy(getBoard()));
+        getCurrentPlayer().informMoves(Collections.unmodifiableList(getPossibleMoves()));
+    }
+    
+    @Override
+    public void cancelLastMove() {
+        super.cancelLastMove();
+        informPlayer();
+    }
+    
     @Override
     public void step() {
         if (isGameEnded()) {
             throw new IllegalStateException();
         }
-        getCurrentPlayer().informPastMoves(Collections.unmodifiableList(getMoves()));
-        getCurrentPlayer().informBoard(new BoardProxy(getBoard()));
-        getCurrentPlayer().informMoves(Collections.unmodifiableList(getPossibleMoves()));
+        informPlayer();
         Move m = getCurrentPlayer().pickMove();
         applyMove(m);
     }

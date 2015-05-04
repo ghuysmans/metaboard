@@ -31,10 +31,6 @@ import java.util.List;
 public class King extends StepPiece {
     
     public King(NameAvatar player) {
-        this(player, false);
-    }
-    
-    public King(NameAvatar player, boolean moved) {
         super(player);
     }
     
