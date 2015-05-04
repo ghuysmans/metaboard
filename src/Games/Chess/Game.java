@@ -46,11 +46,12 @@ import java.util.List;
 public class Game extends GameHistory<Board, Move, IPickingDecisionMaker<IBoard, Move, NameAvatar>> implements IPickingGame<Board, Move, IPickingDecisionMaker<IBoard, Move, NameAvatar>> {
     
     private final Board board;
-    private List<Move> acceptedMoves;
+    private final List<List<Move>> acceptedMovesLists;
     
     public Game(IPickingDecisionMaker<IBoard, Move, NameAvatar> white, IPickingDecisionMaker<IBoard, Move, NameAvatar> black, Board board) {
         super(Arrays.asList(white, black));
         
+        this.acceptedMovesLists = new ArrayList();
         this.board = board;
     }
     
@@ -188,11 +189,6 @@ public class Game extends GameHistory<Board, Move, IPickingDecisionMaker<IBoard,
         return isFree(new Coordinate(x, y));
     }
 
-    @Override
-    public List<Move> getPossibleMoves() {
-        return getPossibleMoves(getCurrentPlayer().getAvatar());
-    }
-    
     public Coordinate getKingPosition(NameAvatar avatar) {
         Piece king = getBoard().getPieces(p -> p instanceof King && p.getAvatar() == avatar).get(0);
         return getBoard().getCoordinate(king);
@@ -244,11 +240,7 @@ public class Game extends GameHistory<Board, Move, IPickingDecisionMaker<IBoard,
         return moves;
     }
     
-    public List<Move> getPossibleMoves(NameAvatar avatar) {
-        if (acceptedMoves != null) {
-            return acceptedMoves;
-        }
-
+    private List<Move> getPossibleMoves(NameAvatar avatar) {
         List<Move> moves = new ArrayList();
         
         if (getTurn() > 0 && getMove(-1) instanceof DrawOffer) {
@@ -268,8 +260,12 @@ public class Game extends GameHistory<Board, Move, IPickingDecisionMaker<IBoard,
             moves.add(new Resign());
         }
         
-        acceptedMoves = Collections.unmodifiableList(moves);
-        return acceptedMoves;
+        return Collections.unmodifiableList(moves);
+    }
+    
+    @Override
+    public List<Move> getPossibleMoves() {
+        return acceptedMovesLists.get(acceptedMovesLists.size() - 1);
     }
     
     private NameAvatar getOpponent(NameAvatar avatar) {
@@ -297,9 +293,10 @@ public class Game extends GameHistory<Board, Move, IPickingDecisionMaker<IBoard,
     
     @Override
     public void applyMove(Move m) {
-        if (acceptedMoves.contains(m)) {
+        if (getPossibleMoves().contains(m)) {
             super.applyMove(m);
-            acceptedMoves = null;
+            acceptedMovesLists.add(getPossibleMoves(getCurrentPlayer().getAvatar()));
+            informPlayer();
         }
         else {
             System.out.println("???");
@@ -315,6 +312,7 @@ public class Game extends GameHistory<Board, Move, IPickingDecisionMaker<IBoard,
     @Override
     public void cancelLastMove() {
         super.cancelLastMove();
+        acceptedMovesLists.remove(acceptedMovesLists.size() - 1);
         informPlayer();
     }
     
@@ -323,9 +321,7 @@ public class Game extends GameHistory<Board, Move, IPickingDecisionMaker<IBoard,
         if (isGameEnded()) {
             throw new IllegalStateException();
         }
-        informPlayer();
-        Move m = getCurrentPlayer().pickMove();
-        applyMove(m);
+        applyMove(getCurrentPlayer().pickMove());
     }
 
 }
