@@ -68,7 +68,12 @@ public class Launcher extends Application {
         }
         show();
     }
-
+    
+    public void cancel() {
+        g.cancelLastMove();
+        show();
+    }
+    
     @Override
     public void start(Stage primaryStage) {
         initGame();
@@ -77,6 +82,7 @@ public class Launcher extends Application {
         show();
         
         gv.setOnMousePressed(event -> step());
+        gv.setOnScroll(event -> cancel());
         StackPane root = new StackPane();
         root.getChildren().add(gv);
         primaryStage.setScene(new Scene(root, 640, 640));

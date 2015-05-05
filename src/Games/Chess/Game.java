@@ -51,8 +51,10 @@ public class Game extends GameHistory<Board, Move, IPickingDecisionMaker<IBoard,
     public Game(IPickingDecisionMaker<IBoard, Move, NameAvatar> white, IPickingDecisionMaker<IBoard, Move, NameAvatar> black, Board board) {
         super(Arrays.asList(white, black));
         
-        this.acceptedMovesLists = new ArrayList();
         this.board = board;
+        this.acceptedMovesLists = new ArrayList();
+        acceptedMovesLists.add(getPossibleMoves(getCurrentPlayer().getAvatar()));
+        informPlayer();
     }
     
     public Game(IPickingDecisionMaker<IBoard, Move, NameAvatar> white, IPickingDecisionMaker<IBoard, Move, NameAvatar> black, IBoard board, List<Move> moves) {
@@ -311,6 +313,9 @@ public class Game extends GameHistory<Board, Move, IPickingDecisionMaker<IBoard,
     
     @Override
     public void cancelLastMove() {
+        if (acceptedMovesLists.size() < 2)
+            return;
+        
         super.cancelLastMove();
         acceptedMovesLists.remove(acceptedMovesLists.size() - 1);
         informPlayer();
