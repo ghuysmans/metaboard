@@ -242,7 +242,7 @@ public class Game extends GameHistory<Board, Move, IPickingDecisionMaker<IBoard,
         return moves;
     }
     
-    private List<Move> getPossibleMoves(NameAvatar avatar) {
+    public List<Move> getPossibleMoves(NameAvatar avatar) {
         List<Move> moves = new ArrayList();
         
         if (getTurn() > 0 && getMove(-1) instanceof DrawOffer) {

@@ -73,7 +73,7 @@ public abstract class ChessAI implements IPickingDecisionMaker<IBoard, Move, Nam
     }
 
     @Override
-    public final void informEnd(List<NameAvatar> winners) {
+    public void informEnd(List<NameAvatar> winners) {
     }
     
     @Override
