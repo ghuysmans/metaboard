@@ -32,4 +32,8 @@ public interface Move extends IMove<Board> {
         return false;
     }
     
+    default Piece getCaptured() {
+        return null;
+    }
+    
 }

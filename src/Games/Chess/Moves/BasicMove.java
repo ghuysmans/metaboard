@@ -50,7 +50,8 @@ public class BasicMove
     public Piece getMovingPiece() {
         return movingPiece;
     }
-    
+
+    @Override
     public Piece getCaptured() {
         return captured;
     }
