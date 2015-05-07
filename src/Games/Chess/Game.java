@@ -275,10 +275,8 @@ public class Game extends GameHistory<Board, Move, IPickingDecisionMaker<IBoard,
     }
     
     public boolean inCheck(NameAvatar avatar) {
-        Coordinate kingPosition = getKingPosition(avatar);
-        
         for (BasicMove m : getBasicMoves(getOpponent(avatar))) { // We do not need to take into account Castling nor EnPassant, because these moves can not take a king
-            if (m.getDestination().equals(kingPosition)) {
+            if (m.getCaptured() instanceof King) {
                 return true;
             }
         }
