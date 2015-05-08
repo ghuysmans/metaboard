@@ -52,17 +52,26 @@ public class Game extends GameHistory<Board, Move, IPickingDecisionMaker<IBoard,
         super(Arrays.asList(white, black));
         
         this.board = board;
-        this.acceptedMovesLists = new ArrayList();
+        
+        acceptedMovesLists = new ArrayList();
         acceptedMovesLists.add(getPossibleMoves(getCurrentPlayer().getAvatar()));
+
         informPlayer();
     }
     
     public Game(IPickingDecisionMaker<IBoard, Move, NameAvatar> white, IPickingDecisionMaker<IBoard, Move, NameAvatar> black, IBoard board, List<Move> moves) {
-        this(white, black, new Board(board));
+        super(Arrays.asList(white, black));
+        
+        this.board = new Board(board);
         
         for (Move m : moves) {
             addMove(m);
         }
+        
+        acceptedMovesLists = new ArrayList();
+        acceptedMovesLists.add(getPossibleMoves(getCurrentPlayer().getAvatar()));
+        
+        informPlayer();
     }
     
     public IPickingDecisionMaker<IBoard, Move, NameAvatar> getWhite() {
