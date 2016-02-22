@@ -77,7 +77,7 @@ public class Map2D<P extends Piece, C extends GridCoordinate> implements IBoard<
         	elements.set(c.getY() * width + c.getX(), e);
         }
         else {
-            assert false;
+            throw new IllegalArgumentException();
         }
     }
 
