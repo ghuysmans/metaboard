@@ -23,7 +23,7 @@ import Core.Piece;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.function.Consumer;
+import Utils.Consumer;
 
 /**
  * @author Fabian Pijcke
@@ -33,11 +33,21 @@ import java.util.function.Consumer;
 public class InversibleMap2D<P extends Piece, C extends GridCoordinate> extends Map2D<P, C> {
     private final HashMap<P, C> inverse;
     
+    /**
+     * Constructs a grid board.
+     * 
+     * @param width
+     * @param height
+     */
     public InversibleMap2D(int width, int height) {
         super(width, height);
-        this.inverse = new HashMap();
+        this.inverse = new HashMap<>();
     }
     
+    /**
+     * @param e
+     * @return the coordinates of the given piece, using a hashmap.
+     */
     public C getCoordinate(P e) {
         return inverse.get(e);
     }
@@ -53,7 +63,7 @@ public class InversibleMap2D<P extends Piece, C extends GridCoordinate> extends 
     
     @Override
     public List<P> getPieces() {
-        return new ArrayList(inverse.keySet());
+        return new ArrayList<>(inverse.keySet());
     }
 
     @Override

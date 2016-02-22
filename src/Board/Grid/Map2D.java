@@ -19,25 +19,36 @@
 
 package Board.Grid;
 
+import java.util.ArrayList;
+
 import Board.IBoard;
 import Core.Piece;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
+import Utils.Consumer;
 
 /**
+ * The complete implementation of a 2D map (grid) board. Instances of this class are meant to be passed to the game
+ * implementation, not to the users or AIs.
+ * 
  * @author Fabian Pijcke
  * @param <P> 
  * @param <C> 
  */
 public class Map2D<P extends Piece, C extends GridCoordinate> implements IBoard<P, C>, IMap2D<P, C> {
     
-    private final Object[] elements;
+    private final ArrayList<P> elements;
     private final int width, height;
     
+    /**
+     * Constructs an empty Grid map.
+     * 
+     * @param width
+     * @param height
+     */
     public Map2D(int width, int height) {
-        elements = new Object[width * height];
+    	elements = new ArrayList<>(width * height);
+    	for (int i = width * height; i > 0; --i) {
+    		elements.add(null);
+    	}
         this.width = width;
         this.height = height;
     }
@@ -45,7 +56,7 @@ public class Map2D<P extends Piece, C extends GridCoordinate> implements IBoard<
     @Override
     public P getPieceAt(C c) {
         if (has(c)) {
-            return (P) elements[c.getY() * width + c.getX()];
+        	return elements.get(c.getY() * width + c.getX());
         }
         return null;
     }
@@ -63,7 +74,7 @@ public class Map2D<P extends Piece, C extends GridCoordinate> implements IBoard<
     @Override
     public void setPieceAt(C c, P e) {
         if (has(c)) {
-            elements[c.getY() * width + c.getX()] = e;
+        	elements.set(c.getY() * width + c.getX(), e);
         }
         else {
             assert false;
@@ -72,11 +83,7 @@ public class Map2D<P extends Piece, C extends GridCoordinate> implements IBoard<
 
     @Override
     public void forEach(Consumer<P> c) {
-        for (int i = 0; i < elements.length; ++i) {
-            if (elements[i] != null) {
-                c.accept((P) elements[i]);
-            }
-        }
+    	elements.forEach(c.filter((v) -> v != null));
     }
 
     @Override
@@ -84,19 +91,4 @@ public class Map2D<P extends Piece, C extends GridCoordinate> implements IBoard<
         return c.getX() >= 0 && c.getX() < getWidth() && c.getY() >= 0 && c.getY() < getHeight();
     }
     
-    @Override
-    public List<P> getPieces(Predicate<P> predicate) {
-        List<P> pieces = getPieces();
-        pieces.removeIf(predicate.negate());
-        return pieces;
-    }
-
-    @Override
-    public List<P> getPieces() {
-        List<P> pieces = new ArrayList();
-        forEach((P piece) -> pieces.add(piece));
-        return pieces;
-    }
-
-
 }

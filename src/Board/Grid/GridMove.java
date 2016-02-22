@@ -26,5 +26,5 @@ import Core.IMove;
  * @param <D>
  */
 public interface GridMove<D extends Map2D<?, ? extends GridCoordinate>> extends IMove<D> {
-
+	// No implementation, just restricts the class parameters.
 }

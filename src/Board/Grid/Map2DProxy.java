@@ -20,10 +20,12 @@
 package Board.Grid;
 
 import Core.Piece;
-import java.util.function.Consumer;
+import Utils.Consumer;
 
 /**
- * Proxy of InversibleMap2D, which is our DataBoard
+ * When asking to the user/AI what action to take, we want to give him read-only information.
+ * This wrapper allows the game to create a read-only version of the board using the proxy design pattern.
+ * Instances of this class are meant to be passed to the user/AI instead of Map2D instances.
  * 
  * @author Fabian Pijcke
  * @param <P> 
@@ -34,6 +36,10 @@ public class Map2DProxy<P extends Piece, C extends GridCoordinate, D extends Map
 
     private final D pieces;
     
+    /**
+     * Constructs a read-only version of a Map2D board. 
+     * @param pieces
+     */
     public Map2DProxy(D pieces) { // Game should keep control over the pieces variable, as GridBoard will not alter it.
         this.pieces = pieces;
     }

@@ -22,20 +22,34 @@ package Board.Grid;
 import Board.ICoordinate;
 
 /**
+ * An immutable 2D coordinate using integers.
+ * 
  * @author Fabian Pijcke
  */
 public class GridCoordinate implements ICoordinate {
     private final int x, y;
     
+    /**
+     * Constructs a 2D coordinate.
+     * 
+     * @param x
+     * @param y
+     */
     public GridCoordinate(int x, int y) {
         this.x = x;
         this.y = y;
     }
     
+    /**
+     * @return the x coordinate.
+     */
     public int getX() {
         return x;
     }
     
+    /**
+     * @return the y coordinate.
+     */
     public int getY() {
         return y;
     }
@@ -44,5 +58,5 @@ public class GridCoordinate implements ICoordinate {
     public String toString() {
         return "(" + getX() + ", " + getY() + ")";
     }
-
+    
 }

@@ -28,6 +28,13 @@ import Core.Piece;
  */
 public interface IBoard<P extends Piece, C extends ICoordinate> extends IBoardProxy<P, C> {
     
+	/**
+	 * Puts the given piece at the given coordinate.
+	 * The behaviour is not specified if the piece was already present on the board.
+	 * 
+	 * @param coord
+	 * @param piece
+	 */
     void setPieceAt(C coord, P piece);
 
 }

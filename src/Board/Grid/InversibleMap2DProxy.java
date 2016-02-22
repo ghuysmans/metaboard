@@ -23,6 +23,8 @@ import Core.Piece;
 import java.util.List;
 
 /**
+ * Proxy for the InversibleMap2D {@link Map2DProxy}
+ * 
  * @author Fabian Pijcke
  * @param <P>
  * @param <C>
@@ -32,6 +34,10 @@ public class InversibleMap2DProxy<P extends Piece, C extends GridCoordinate, D e
     
     private final D pieces;
 
+    /**
+     * Creates a read-only version of a Map2DProxy.
+     * @param pieces
+     */
     public InversibleMap2DProxy(D pieces) {
         super(pieces);
         this.pieces = pieces;

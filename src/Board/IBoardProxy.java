@@ -19,11 +19,12 @@
 
 package Board;
 
-import Core.Piece;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 import java.util.function.Predicate;
+
+import Core.Piece;
+import Utils.Consumer;
 
 /**
  * The board is the main component of a board game. It must provide access to
@@ -39,18 +40,34 @@ import java.util.function.Predicate;
  */
 public interface IBoardProxy<P extends Piece, C extends ICoordinate> {
 
+	/**
+	 * @param coord
+	 * @return the piece at coordinate coord, if any, or null otherwise.
+	 */
     P getPieceAt(C coord);
 
+    /**
+     * Applies c to any piece on the board.
+     * 
+     * @param c
+     */
     void forEach(Consumer<P> c);
     
+    /**
+     * @param predicate
+     * @return a list of the pieces on the board satisfying predicate.
+     */
     default List<P> getPieces(Predicate<P> predicate) {
         List<P> pieces = getPieces();
         pieces.removeIf(predicate.negate());
         return pieces;
     }
 
+    /**
+     * @return a list of the pieces on the board.
+     */
     default List<P> getPieces() {
-        List<P> pieces = new ArrayList();
+        List<P> pieces = new ArrayList<>();
         forEach((P piece) -> pieces.add(piece));
         return pieces;
     }

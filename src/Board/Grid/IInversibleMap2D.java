@@ -22,10 +22,17 @@ package Board.Grid;
 import Core.Piece;
 
 /**
+ * Extends the 2D map interface with an operation returning the coordinates of a given piece.
+ * This common interface is meant to be passed both to the user (or AI) and to the game implementation.
+ * 
  * @author Fabian Pijcke
- * @param <P>
- * @param <C>
+ * @param <P> A piece, as in IMap2D.
+ * @param <C> A 2D coordinate.
  */
 public interface IInversibleMap2D<P extends Piece, C extends GridCoordinate> extends IMap2D<P, C> {
+	/**
+	 * @param piece
+	 * @return the coordinate of the given piece.
+	 */
     C getCoordinate(P piece);
 }
