@@ -22,10 +22,24 @@ package Core;
 import Board.IBoard;
 
 /**
+ * A move is made of two actions. One going forward and the other backward.
+ * 
  * @author Fabian Pijcke
  * @param <B>
  */
-public interface IMove<B extends IBoard> {
+public interface IMove<B extends IBoard<?, ?>> {
+	/**
+	 * Applies the move on the board.
+	 * 
+	 * @param board
+	 */
     void apply(B board);
+    
+    /**
+     * Cancels the move.
+     * Assuming the state of the board is the one after apply has been called, the board should be in its state just before after this method is applied.
+     * 
+     * @param board
+     */
     void cancel(B board);
 }

@@ -22,6 +22,9 @@ package Board;
 import Core.Piece;
 
 /**
+ * The board contains the current state of the game.
+ * All the informations moves have effect on must be handled by this class for the move class is given access only to the board of the game.
+ * 
  * @author Fabian Pijcke
  * @param <P>
  * @param <C>

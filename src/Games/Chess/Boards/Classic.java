@@ -19,7 +19,7 @@
 
 package Games.Chess.Boards;
 
-import Core.NameAvatar;
+import Core.Avatar;
 import Games.Chess.Board;
 import Games.Chess.Coordinate;
 import Games.Chess.Pieces.Bishop;
@@ -34,16 +34,16 @@ import Games.Chess.Pieces.Rook;
  */
 public class Classic extends Board {
         
-    public Classic(NameAvatar white, NameAvatar black) {
+    public Classic(Avatar white, Avatar black) {
         super();
         
-        NameAvatar[] avatars = new NameAvatar[2];
+        Avatar[] avatars = new Avatar[2];
         avatars[0] = white;
         avatars[1] = black;
         
         for (int i = 0; i < 2; ++i) {
             int row = i * 7;
-            NameAvatar player = avatars[i];
+            Avatar player = avatars[i];
 
             setPieceAt(new Coordinate(0, row), new Rook(player));
             setPieceAt(new Coordinate(1, row), new Knight(player));

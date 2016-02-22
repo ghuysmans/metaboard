@@ -19,18 +19,19 @@
 
 package Games.Chess.Pieces;
 
-import Board.Grid.GridCoordinate;
-import Core.NameAvatar;
-import Games.Chess.LinearPiece;
 import java.util.Arrays;
 import java.util.List;
+
+import Board.Grid.GridCoordinate;
+import Core.Avatar;
+import Games.Chess.LinearPiece;
 
 /**
  * @author Fabian Pijcke
  */
 public class Rook extends LinearPiece {
     
-    public Rook(NameAvatar player) {
+    public Rook(Avatar player) {
         super(player);
     }
 

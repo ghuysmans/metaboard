@@ -19,7 +19,7 @@
 
 package Games.Chess.AIs;
 
-import Core.NameAvatar;
+import Core.Avatar;
 import Games.Chess.Move;
 
 /**
@@ -27,7 +27,7 @@ import Games.Chess.Move;
  */
 public class FirstMove extends ChessAI {
     
-    public FirstMove(NameAvatar avatar) {
+    public FirstMove(Avatar avatar) {
         super(avatar);
     }
 

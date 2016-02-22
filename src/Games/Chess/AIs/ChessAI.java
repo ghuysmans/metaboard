@@ -18,14 +18,15 @@
  */
 package Games.Chess.AIs;
 
-import Core.NameAvatar;
+import java.util.List;
+
+import Core.Avatar;
 import Games.Chess.Game;
 import Games.Chess.IBoard;
 import Games.Chess.Move;
 import Games.Chess.Piece;
 import Move.Picking.IPickingDecisionMaker;
 import Move.Picking.RandomAI;
-import java.util.List;
 
 /**
  * @author Fabian Pijcke
@@ -33,9 +34,9 @@ import java.util.List;
  * In order to implement an AI for the chess game, one must override this class.
  * The main component to implement is the pickMove() method.
  */
-public abstract class ChessAI implements IPickingDecisionMaker<IBoard, Move, NameAvatar> {
+public abstract class ChessAI implements IPickingDecisionMaker<IBoard, Move, Avatar> {
 
-    private final NameAvatar avatar;
+    private final Avatar avatar;
     private IBoard board;
     private List<Move> possibleMoves, pastMoves;
 
@@ -45,7 +46,7 @@ public abstract class ChessAI implements IPickingDecisionMaker<IBoard, Move, Nam
      *
      * @param avatar
      */
-    public ChessAI(NameAvatar avatar) {
+    public ChessAI(Avatar avatar) {
         this.avatar = avatar;
     }
 
@@ -54,7 +55,7 @@ public abstract class ChessAI implements IPickingDecisionMaker<IBoard, Move, Nam
      * to you.
      */
     @Override
-    public final NameAvatar getAvatar() {
+    public final Avatar getAvatar() {
         return avatar;
     }
 
@@ -63,7 +64,7 @@ public abstract class ChessAI implements IPickingDecisionMaker<IBoard, Move, Nam
      *
      * @return the avatar name of your opponent.
      */
-    public final NameAvatar getOpponent() {
+    public final Avatar getOpponent() {
         for (Piece p : getBoard().getPieces()) {
             if (p.getAvatar() != getAvatar()) {
                 return p.getAvatar();
@@ -144,7 +145,7 @@ public abstract class ChessAI implements IPickingDecisionMaker<IBoard, Move, Nam
      * @param winners
      */
     @Override
-    public void informEnd(List<NameAvatar> winners) {
+    public void informEnd(List<Avatar> winners) {
     }
 
     /**

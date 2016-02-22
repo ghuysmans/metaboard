@@ -19,18 +19,19 @@
 
 package Games.Chess;
 
-import Games.Chess.Moves.BasicMove;
-import Board.Grid.GridCoordinate;
-import Core.NameAvatar;
 import java.util.ArrayList;
 import java.util.List;
+
+import Board.Grid.GridCoordinate;
+import Core.Avatar;
+import Games.Chess.Moves.BasicMove;
 
 /**
  * @author Fabian Pijcke
  */
 public abstract class StepPiece extends Piece {
     
-    public StepPiece(NameAvatar player) {
+    public StepPiece(Avatar player) {
         super(player);
     }
     

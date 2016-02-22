@@ -19,18 +19,19 @@
 
 package Games.Chess.Pieces;
 
-import Board.Grid.GridCoordinate;
-import Core.NameAvatar;
-import Games.Chess.LinearPiece;
 import java.util.Arrays;
 import java.util.List;
+
+import Board.Grid.GridCoordinate;
+import Core.Avatar;
+import Games.Chess.LinearPiece;
 
 /**
  * @author Fabian Pijcke
  */
 public class Bishop extends LinearPiece {
     
-    public Bishop(NameAvatar player) {
+    public Bishop(Avatar player) {
         super(player);
     }
     

@@ -19,17 +19,18 @@
 
 package Games.Chess.Pieces;
 
-import Board.Grid.GridCoordinate;
-import Core.NameAvatar;
-import Games.Chess.Moves.Promotion;
-import Games.Chess.Piece;
-import Games.Chess.Coordinate;
-import Games.Chess.IBoard;
-import Games.Chess.Moves.BasicMove;
-import Games.Chess.Moves.PawnLeap;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import Board.Grid.GridCoordinate;
+import Core.Avatar;
+import Games.Chess.Coordinate;
+import Games.Chess.IBoard;
+import Games.Chess.Piece;
+import Games.Chess.Moves.BasicMove;
+import Games.Chess.Moves.PawnLeap;
+import Games.Chess.Moves.Promotion;
 
 /**
  * @author Fabian Pijcke
@@ -38,7 +39,7 @@ public class Pawn extends Piece {
     
     private final int dir;
     
-    public Pawn(NameAvatar player, GridCoordinate initial) {
+    public Pawn(Avatar player, GridCoordinate initial) {
         super(player);
         dir = initial.getY() == 1 ? 1 : -1;
     }
