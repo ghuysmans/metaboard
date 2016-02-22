@@ -18,7 +18,7 @@
  */
 package Games.Chess.AIs;
 
-import Core.NameAvatar;
+import Core.Avatar;
 import Games.Chess.Game;
 import Games.Chess.Move;
 import Move.Picking.IAuxiliaryMove;
@@ -38,12 +38,12 @@ public class MiniMaxAI extends ChessAI {
     private final int DEPTH = 2;
     private final Random r = new Random();
     
-    public MiniMaxAI(NameAvatar avatar) {
+    public MiniMaxAI(Avatar avatar) {
         super(avatar);
     }
     
     @Override
-    public final void informEnd(List<NameAvatar> winners) {
+    public final void informEnd(List<Avatar> winners) {
         if (winners.size() == 2) {
             System.out.println("Égalité");
         }
