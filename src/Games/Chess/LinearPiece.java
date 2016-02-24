@@ -41,7 +41,7 @@ public abstract class LinearPiece extends Piece {
         int x = position.getX();
         int y = position.getY();
 
-        ArrayList<BasicMove> moves = new ArrayList();
+        ArrayList<BasicMove> moves = new ArrayList<>();
 
         for (GridCoordinate direction : getDirections()) {
             int dx = direction.getX();
