@@ -35,9 +35,11 @@ public class Resign implements Move, IAuxiliaryMove {
 
     @Override
     public void apply(Board board) {
+    	// Nothing to do : The board checks whether the last move was Resign, if yes the current player has won.
     }
 
     @Override
     public void cancel(Board board) {
+    	// Nothing to do as the last move will be removed from the stack of moves played already.
     }
 }
