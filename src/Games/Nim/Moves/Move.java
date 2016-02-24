@@ -1,8 +1,8 @@
 package Games.Nim.Moves;
 
 import Core.IMove;
-import Games.Nim.Board;
 import Games.Nim.Game;
+import Games.Nim.Board;
 
 public abstract class Move implements IMove<Board> {
 	Move() {

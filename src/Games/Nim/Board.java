@@ -3,7 +3,7 @@ package Games.Nim;
 import Board.Path.Path;
 import Board.Path.PathCoordinate;
 
-public class Board extends Path<Token, PathCoordinate> {
+public class Board extends Path<Token, PathCoordinate>  implements IBoard {
 	
 	private Token token;
 	private PathCoordinate tokenPosition;

@@ -17,6 +17,11 @@ public class Game implements Core.Game<Board, Move, IPlayer> {
 		this.players = players;
 		this.maxLeap = maxLeap;
 		this.board = new Board(initialPosition + 1);
+		
+		for (IPlayer p : players) {
+			p.informBoard(new BoardProxy(this.board));
+			p.informMaxLeap(maxLeap);
+		}
 	}
 	
 	public int getMaxLeap() {
