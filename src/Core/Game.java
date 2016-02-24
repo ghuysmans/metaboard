@@ -39,37 +39,44 @@ public interface Game<B extends IBoard<?, ?>, M extends IMove<B>, DM extends IDe
 	/**
 	 * @return the game board.
 	 */
-    B getBoard();
+	B getBoard();
 
-    /**
-     * The players list may vary as the game goes on.
-     * The game implementation decides whether the players having lost still appear in this list or not.
-     * 
-     * @return the players list.
-     */
-    List<DM> getPlayers();
-    
-    /**
-     * @return the player which has to make the next move.
-     */
-    DM getCurrentPlayer();
-    
-    /**
-     * Applies a move.
-     * @param m
-     */
-    default void applyMove(M m) {
-        m.apply(getBoard());
-    }
+	/**
+	 * The players list may vary as the game goes on.
+	 * 
+	 * The game implementation decides whether the players having lost still
+	 * appear in this list or not.
+	 * 
+	 * Note that the players will not have direct access to this method. Hence
+	 * it is not necessary to protect it with, for example,
+	 * Collections.unmodifiableList.
+	 * 
+	 * @return the players list.
+	 */
+	List<DM> getPlayers();
 
-    /**
-     * @return true if the winners list is known already.
-     */
-    boolean isGameEnded();
-    
-    /**
-     * @return the winners list.
-     */
-    List<DM> getWinners();
-    
+	/**
+	 * @return the player which has to make the next move.
+	 */
+	DM getCurrentPlayer();
+
+	/**
+	 * Applies a move.
+	 * 
+	 * @param m
+	 */
+	default void applyMove(M m) {
+		m.apply(getBoard());
+	}
+
+	/**
+	 * @return true if the winners list is known already.
+	 */
+	boolean isGameEnded();
+
+	/**
+	 * @return the winners list.
+	 */
+	List<DM> getWinners();
+
 }
