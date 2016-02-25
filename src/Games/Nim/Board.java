@@ -14,6 +14,7 @@ public class Board extends Path<Token, PathCoordinate>  implements IBoard {
 		tokenPosition = new PathCoordinate(length - 1);
 	}
 	
+	@Override
 	public PathCoordinate getTokenPosition() {
 		return tokenPosition;
 	}
