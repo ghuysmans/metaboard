@@ -23,7 +23,7 @@ import java.util.ArrayList;
 
 import Board.IBoard;
 import Core.Piece;
-import Utils.Consumer;
+import Utils.IConsumer;
 
 /**
  * The complete implementation of a Path board. Instances of this class are meant to be passed to the game
@@ -76,7 +76,7 @@ public class Path<P extends Piece, C extends PathCoordinate> implements IBoard<P
 	}
 	
 	@Override
-	public void forEach(Consumer<P> c) {
+	public void forEach(IConsumer<P> c) {
 		elements.forEach(c.filter((v) -> v != null));
 	}
 	

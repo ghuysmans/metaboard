@@ -17,48 +17,15 @@
  along with MetaBoard. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package Board.Path;
+package Piece.Anonymous;
 
 import Core.Piece;
-import Utils.IConsumer;
 
 /**
+ * Models pieces belonging to noone once they have been put on the board.
  * 
  * @author Fabian Pijcke
- *
- * @param <P>
- * @param <C>
- * @param <D>
  */
-public class PathProxy<P extends Piece, C extends PathCoordinate, D extends Path<P, C>> implements IPath<P, C> {
-
-	private final D pieces;
-
-	/**
-	 * Constructs a read-only version of a Path board.
-	 * @param pieces
-	 */
-	public PathProxy(D pieces) {
-		this.pieces = pieces;
-	}
-	
-    @Override
-    public int getLength() {
-        return pieces.getLength();
-    }
-    
-    @Override
-    public P getPieceAt(C c) {
-        return pieces.getPieceAt(c);
-    }
-    
-    @Override
-    public void forEach(IConsumer<P> c) {
-        pieces.forEach(c);
-    }
-    
-    @Override
-    public boolean has(C c) {
-        return pieces.has(c);
-    }
+public interface IAnonymousPiece extends Piece {
+	// We are legion. We do not forgive. We do not forget. Expect us.
 }

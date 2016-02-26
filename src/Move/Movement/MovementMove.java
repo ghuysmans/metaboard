@@ -25,41 +25,57 @@ import Core.IMove;
 import Core.Piece;
 
 /**
+ * This model of movement is indicated when the pieces are moved from one place
+ * to another on the board. It is not adapted to games where moves can combine
+ * several atomic movements (like checkers).
+ * 
  * @author Fabian Pijcke
  * @param <C>
  * @param <P>
  * @param <D>
  */
 public class MovementMove<P extends Piece, C extends ICoordinate, D extends IBoard<P, C>> implements IMove<D> {
-    
-    private final C start, destination;
-    private P startPiece, destinationPiece;
-    
-    public MovementMove(C start, C destination) {
-        this.start = start;
-        this.destination = destination;
-    }
 
-    public C getStart() {
-        return start;
-    }
-    
-    public C getDestination() {
-        return destination;
-    }
+	private final C start, destination;
+	private P startPiece, destinationPiece;
 
-    @Override
-    public void apply(D board) {
-        startPiece = board.getPieceAt(getStart());
-        destinationPiece = board.getPieceAt(getDestination());
-        board.setPieceAt(getStart(), null);
-        board.setPieceAt(getDestination(), startPiece);
-    }
+	/**
+	 * Constructs a basic movement move.
+	 * 
+	 * @param start
+	 * @param destination
+	 */
+	public MovementMove(C start, C destination) {
+		this.start = start;
+		this.destination = destination;
+	}
 
-    @Override
-    public void cancel(D board) {
-        board.setPieceAt(getDestination(), destinationPiece);
-        board.setPieceAt(getStart(), startPiece);
-    }
-    
+	/**
+	 * @return the start position of the move.
+	 */
+	public C getStart() {
+		return start;
+	}
+
+	/**
+	 * @return the destination position of the move.
+	 */
+	public C getDestination() {
+		return destination;
+	}
+
+	@Override
+	public void apply(D board) {
+		startPiece = board.getPieceAt(getStart());
+		destinationPiece = board.getPieceAt(getDestination());
+		board.setPieceAt(getStart(), null);
+		board.setPieceAt(getDestination(), startPiece);
+	}
+
+	@Override
+	public void cancel(D board) {
+		board.setPieceAt(getDestination(), destinationPiece);
+		board.setPieceAt(getStart(), startPiece);
+	}
+
 }

@@ -24,12 +24,12 @@ import java.util.List;
 import Board.Grid.GridCoordinate;
 import Core.Avatar;
 import Games.Chess.Moves.BasicMove;
-import Piece.Owned.OwnedPiece;
+import Piece.Owned.IOwnedPiece;
 
 /**
  * @author Fabian Pijcke
  */
-public abstract class Piece implements OwnedPiece<Avatar> {
+public abstract class Piece implements IOwnedPiece<Avatar> {
     
     private final Avatar avatar;
     

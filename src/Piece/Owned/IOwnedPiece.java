@@ -17,13 +17,22 @@
  along with MetaBoard. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package Piece.Anonymous;
+package Piece.Owned;
 
 import Core.Piece;
+import Core.Avatar;
 
 /**
+ * Models pieces belonging to some player.
+ * 
  * @author Fabian Pijcke
+ * @param <P>
  */
-public interface AnonymousPiece extends Piece {
+public interface IOwnedPiece<P extends Avatar> extends Piece {
+	
+	/**
+	 * @return The avatar owning this piece.
+	 */
+    public P getAvatar();
     
 }

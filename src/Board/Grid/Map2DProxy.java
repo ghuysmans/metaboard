@@ -20,7 +20,7 @@
 package Board.Grid;
 
 import Core.Piece;
-import Utils.Consumer;
+import Utils.IConsumer;
 
 /**
  * When asking to the user/AI what action to take, we want to give him read-only information.
@@ -60,7 +60,7 @@ public class Map2DProxy<P extends Piece, C extends GridCoordinate, D extends Map
     }
     
     @Override
-    public void forEach(Consumer<P> c) {
+    public void forEach(IConsumer<P> c) {
         pieces.forEach(c);
     }
     

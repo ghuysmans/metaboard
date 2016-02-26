@@ -23,7 +23,7 @@ import java.util.ArrayList;
 
 import Board.IBoard;
 import Core.Piece;
-import Utils.Consumer;
+import Utils.IConsumer;
 
 /**
  * The complete implementation of a 2D map (grid) board. Instances of this class are meant to be passed to the game
@@ -82,7 +82,7 @@ public class Map2D<P extends Piece, C extends GridCoordinate> implements IBoard<
     }
 
     @Override
-    public void forEach(Consumer<P> c) {
+    public void forEach(IConsumer<P> c) {
     	elements.forEach(c.filter((v) -> v != null));
     }
 

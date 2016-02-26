@@ -23,7 +23,7 @@ import Core.Piece;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import Utils.Consumer;
+import Utils.IConsumer;
 
 /**
  * @author Fabian Pijcke
@@ -67,7 +67,7 @@ public class InversibleMap2D<P extends Piece, C extends GridCoordinate> extends 
     }
 
     @Override
-    public void forEach(Consumer<P> c) {
+    public void forEach(IConsumer<P> c) {
         getPieces().forEach(c);
     }
 

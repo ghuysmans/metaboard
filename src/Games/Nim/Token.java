@@ -19,7 +19,7 @@
 
 package Games.Nim;
 
-import Piece.Anonymous.AnonymousPiece;
+import Piece.Anonymous.IAnonymousPiece;
 
 /**
  * The set of pieces used by the game of Nim is rather trivial. A single token,
@@ -27,6 +27,6 @@ import Piece.Anonymous.AnonymousPiece;
  * 
  * @author Fabian Pijcke
  */
-public class Token implements AnonymousPiece {
+public class Token implements IAnonymousPiece {
 	// A token is an anonymous, undistinguishable part.
 }

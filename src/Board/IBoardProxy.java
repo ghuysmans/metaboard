@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.function.Predicate;
 
 import Core.Piece;
-import Utils.Consumer;
+import Utils.IConsumer;
 
 /**
  * The board proxy is the main component of a board game from the player point
@@ -50,7 +50,7 @@ public interface IBoardProxy<P extends Piece, C extends ICoordinate> {
 	 * 
 	 * @param c
 	 */
-	void forEach(Consumer<P> c);
+	void forEach(IConsumer<P> c);
 
 	/**
 	 * @param predicate

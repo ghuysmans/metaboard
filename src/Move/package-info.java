@@ -17,33 +17,16 @@
  along with MetaBoard. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package Utils;
-
-import java.util.function.Predicate;
-
 /**
- * An extended Consumer allowing a filter method which will cause the consumer to be applied only to the elements
- * accepted by the filter.
+ * Most games use a standard move model. Either the movement model (Chess,
+ * Stratego) or the placement model (Go, Dominoes, OXO).
  * 
- * @author shepard
- *
- * @param <T>
+ * These two move models are factored here. More specialized move models can be
+ * implemented by extending the Core.IMove interface.
+ * 
+ * An alternative to move models is to provide the player with a list of allowed
+ * moves. This way one has not to bother explaining rules, just to compute the
+ * possibilites in a given board state. This behaviour is captured by the
+ * package Move.Picking.
  */
-public interface Consumer<T> extends java.util.function.Consumer<T> {
-	/**
-	 * @param p any predicate on a T instance.
-	 * @return a new consumer applying only to instances satisfying p.
-	 */
-	default Consumer<T> filter(Predicate<T> p) {
-		Consumer<T> con = this;
-		
-		return new Consumer<T>() {
-			@Override
-			public void accept(T t) {
-				if (p.test(t)) {
-					con.accept(t);
-				}
-			}
-		};
-	}
-}
+package Move;

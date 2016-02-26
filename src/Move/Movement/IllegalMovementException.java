@@ -19,6 +19,11 @@
 
 package Move.Movement;
 
+/**
+ * Thrown when a player picks an illegal movement.
+ * 
+ * @author Fabian Pijcke
+ */
 public class IllegalMovementException extends RuntimeException {
 
 	private static final long serialVersionUID = 7424458837754759100L;
