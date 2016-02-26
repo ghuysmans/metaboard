@@ -1,5 +1,5 @@
 /*
- Copyright 2015 Fabian Pijcke
+ Copyright 2015-2016 Fabian Pijcke
 
  This file is part of MetaBoard.
 
@@ -16,6 +16,7 @@
  You should have received a copy of the GNU General Public License
  along with MetaBoard. If not, see <http://www.gnu.org/licenses/>.
  */
+
 package Move.Picking;
 
 /**

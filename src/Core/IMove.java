@@ -1,5 +1,5 @@
 /*
- Copyright 2015 Fabian Pijcke
+ Copyright 2015-2016 Fabian Pijcke
 
  This file is part of MetaBoard.
 
