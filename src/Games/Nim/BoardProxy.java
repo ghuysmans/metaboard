@@ -22,15 +22,26 @@ package Games.Nim;
 import Board.Path.PathCoordinate;
 import Board.Path.PathProxy;
 
+/**
+ * The board given to the players. The token position can be retrieved in
+ * constant time.
+ * 
+ * @author Fabian Pijcke
+ */
 public class BoardProxy extends PathProxy<Token, PathCoordinate, Board> implements IBoard {
-	
+
 	private Board board;
-	
+
+	/**
+	 * Constructs a proxy by encapsulation.
+	 * 
+	 * @param board
+	 */
 	public BoardProxy(Board board) {
 		super(board);
 		this.board = board;
 	}
-	
+
 	@Override
 	public PathCoordinate getTokenPosition() {
 		return board.getTokenPosition();

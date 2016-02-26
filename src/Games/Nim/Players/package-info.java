@@ -17,22 +17,12 @@
  along with MetaBoard. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package Games.Nim;
-
-import Board.Path.IPath;
-import Board.Path.PathCoordinate;
-
 /**
- * As the game of Nim involves only one token, we provide a facility to retrieve
- * the position of the token in constant time.
+ * A player is anything that interracts with the game using legal moves. In
+ * particular, it can be a human (working through some UI) or an AI.
  * 
- * @author Fabian Pijcke
+ * The Games.Nim.FXLauncher class will load only the AIs listed in the
+ * Games.Nim.Players.PlayersList class. Note that HumanConsole is not listed
+ * here as it does not cope well with standard Java IDEs.
  */
-public interface IBoard extends IPath<Token, PathCoordinate> {
-	
-	/**
-	 * @return the current position of the token.
-	 */
-	PathCoordinate getTokenPosition();
-	
-}
+package Games.Nim.Players;

@@ -25,8 +25,21 @@ import java.util.ArrayList;
 
 import Core.NameAvatar;
 
+/**
+ * Terminal-oriented launcher for the game.
+ * 
+ * @author Fabian Pijcke
+ */
 public class Launcher {
 
+	/**
+	 * Usage: java Games.Nim.Launcher maxLeap initialPosition class1 ... classN
+	 * 
+	 * The player classes are just the unqualified names of the classes; for
+	 * example RandomAI or HumanConsole.
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		int maxLeap = Integer.parseInt(args[0]);
 		int initialPosition = Integer.parseInt(args[1]);
@@ -43,19 +56,19 @@ public class Launcher {
 						return "Player " + (n - 2);
 					}
 				}));
-			}
-			catch (ClassNotFoundException | NoSuchMethodException | InvocationTargetException | IllegalAccessException | InstantiationException e) {
+			} catch (ClassNotFoundException | NoSuchMethodException | InvocationTargetException | IllegalAccessException
+					| InstantiationException e) {
 				System.err.println(e.toString());
 				System.out.println("Player skipped");
 			}
 		}
-		
+
 		Game game = new Game(players, maxLeap, initialPosition);
 		while (!game.isGameEnded()) {
 			game.printStatus();
 			game.step();
 		}
-		
+
 		game.printStatus();
 	}
 

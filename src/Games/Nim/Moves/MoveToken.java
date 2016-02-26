@@ -23,10 +23,21 @@ import Board.Path.PathCoordinate;
 import Games.Nim.Board;
 import Games.Nim.Game;
 
+/**
+ * This move moves the token towards the position 0 of a given number of
+ * positions.
+ * 
+ * @author Fabian Pijcke
+ */
 public final class MoveToken extends Move {
-	
+
 	final int leapLength;
-	
+
+	/**
+	 * Creates a move moving the token of leapLength positions towards the position 0.
+	 * 
+	 * @param leapLength
+	 */
 	public MoveToken(final int leapLength) {
 		this.leapLength = leapLength;
 	}
@@ -44,7 +55,7 @@ public final class MoveToken extends Move {
 		PathCoordinate newC = new PathCoordinate(curC.getI() + leapLength);
 		board.setPieceAt(newC, null);
 	}
-	
+
 	@Override
 	public boolean isLegal(Game game) {
 		return leapLength > 0 && leapLength <= game.getMaxLeap();

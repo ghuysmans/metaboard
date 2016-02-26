@@ -22,26 +22,40 @@ package Games.Nim;
 import Board.Path.Path;
 import Board.Path.PathCoordinate;
 
-public class Board extends Path<Token, PathCoordinate>  implements IBoard {
-	
+/**
+ * The Nim board is a simple path on which a token is moved towards position 0.
+ * As there is only one token, we provide a facility to get the token position
+ * in constant time.
+ * 
+ * @author Fabian Pijcke
+ */
+public class Board extends Path<Token, PathCoordinate> implements IBoard {
+
 	private Token token;
 	private PathCoordinate tokenPosition;
 
+	/**
+	 * Constructs a path of a given length and places the token on the last
+	 * cell.
+	 * 
+	 * @param length
+	 */
 	public Board(int length) {
 		super(length);
 		token = new Token();
 		tokenPosition = new PathCoordinate(length - 1);
+		setPieceAt(tokenPosition, token);
 	}
-	
+
 	@Override
 	public PathCoordinate getTokenPosition() {
 		return tokenPosition;
 	}
-	
+
 	@Override
 	public void setPieceAt(PathCoordinate c, Token dummy) {
 		super.setPieceAt(c, token);
 		tokenPosition = c;
 	}
-	
+
 }

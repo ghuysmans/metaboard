@@ -27,8 +27,18 @@ import Games.Nim.Moves.Move;
 import Games.Nim.Moves.MoveToken;
 import Games.Nim.Moves.Resign;
 
+/**
+ * Allows a human player to play in a terminal.
+ * 
+ * @author Fabian Pijcke
+ */
 public class HumanConsole extends Player {
 	
+	/**
+	 * Standard Player constructor.
+	 * 
+	 * @param avatar
+	 */
 	public HumanConsole(NameAvatar avatar) {
 		super(avatar);
 	}

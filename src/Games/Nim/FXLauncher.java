@@ -39,31 +39,36 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+/**
+ * A graphical launcher for the game of Nim.
+ * 
+ * @author Fabian Pijcke
+ */
 public class FXLauncher extends Application {
-	
+
 	private int playersGenerated = 0;
 	private VBox vbox_players = new VBox();
-	
+
 	private class PlayerNode extends HBox {
-		
+
 		private TextField textfield_name;
 		private ComboBox<Class<? extends Player>> combobox_type;
-		
+
 		public PlayerNode() {
 			super();
-			
+
 			textfield_name = new TextField("Player " + (playersGenerated++));
 			combobox_type = new ComboBox<>();
 			combobox_type.getItems().addAll(PlayersList.playersListFX());
-			
+
 			Button button_drop = new Button("X");
 			button_drop.setOnAction((event) -> {
 				vbox_players.getChildren().remove(this);
 			});
-			
+
 			this.getChildren().addAll(textfield_name, combobox_type, button_drop);
 		}
-		
+
 		public Player getPlayer() {
 			Class<? extends Player> class_player = combobox_type.getValue();
 			String name = textfield_name.getText();
@@ -75,47 +80,48 @@ public class FXLauncher extends Application {
 						return name;
 					}
 				});
-			}
-			catch (NoSuchMethodException e) {
+			} catch (NoSuchMethodException e) {
 				System.err.println(class_player.getName() + " does not declare a NameAvatar constructor.");
 				return null;
-			}
-			catch (InvocationTargetException e) {
+			} catch (InvocationTargetException e) {
 				System.err.println(class_player.getName() + " failed to initialize properly.");
 				return null;
-			}
-			catch (IllegalAccessException e) {
+			} catch (IllegalAccessException e) {
 				System.err.println("Constructor of " + class_player.getName() + " is not visible");
 				return null;
-			}
-			catch (InstantiationException e) {
+			} catch (InstantiationException e) {
 				System.err.println("Cannot instanciate " + class_player.getName());
 				return null;
 			}
 		}
-		
+
 	}
-	
+
 	private Spinner<Integer> spinner_maxLeap = new Spinner<>(1, 1000, 3);
 	private Spinner<Integer> spinner_initialPosition = new Spinner<>(10, 100000, 42);
-	
+
+	/**
+	 * Usage : java Games.Nim.FXLauncher
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		launch(args);
 	}
-	
+
 	@Override
 	public void start(Stage primaryStage) {
 		primaryStage.setTitle("MetaBoard - Nim Launcher");
-		
+
 		Button button_addPlayer = new Button("Add player");
 		button_addPlayer.setOnAction((event) -> addPlayer());
-		
+
 		Button button_launch = new Button("Start game!");
 		button_launch.setOnAction((event) -> startGame());
-		
+
 		Button button_exit = new Button("Quit");
 		button_exit.setOnAction((event) -> exit());
-		
+
 		GridPane topPane = new GridPane();
 		topPane.setHgap(10);
 		topPane.setVgap(15);
@@ -123,17 +129,17 @@ public class FXLauncher extends Application {
 		topPane.add(spinner_maxLeap, 1, 0);
 		topPane.add(new Label("Start position"), 0, 1);
 		topPane.add(spinner_initialPosition, 1, 1);
-		
+
 		GridPane bottomPane = new GridPane();
 		bottomPane.setHgap(10);
 		bottomPane.add(button_addPlayer, 0, 0);
 		bottomPane.add(button_launch, 1, 0);
 		bottomPane.add(button_exit, 2, 0);
-		
+
 		BorderPane mainPane = new BorderPane();
 		mainPane.setTop(topPane);
 		mainPane.setBottom(bottomPane);
-		
+
 		mainPane.setCenter(vbox_players);
 		addPlayer();
 		addPlayer();
@@ -141,11 +147,18 @@ public class FXLauncher extends Application {
 		primaryStage.setScene(new Scene(mainPane, 640, 480));
 		primaryStage.show();
 	}
-	
+
+	/**
+	 * Adds a player to the list of players. This player has a default name and
+	 * no player class associated.
+	 */
 	public void addPlayer() {
 		vbox_players.getChildren().add(new PlayerNode());
 	}
-	
+
+	/**
+	 * Starts the game.
+	 */
 	public void startGame() {
 		ArrayList<Player> players = new ArrayList<>();
 		for (Node node : vbox_players.getChildren()) {
@@ -162,7 +175,10 @@ public class FXLauncher extends Application {
 		}
 		game.printStatus();
 	}
-	
+
+	/**
+	 * Exits the launcher and interrupts any game in progress.
+	 */
 	public void exit() {
 		System.exit(0);
 	}

@@ -23,12 +23,30 @@ import Core.IMove;
 import Games.Nim.Game;
 import Games.Nim.Board;
 
+/**
+ * The moves allowed in the Nim game are very simple. Essentially a player can
+ * either give up or move the token. The only difficulty is that the maximal
+ * displacement allowed is not encoded in the board but in the game rules. The
+ * moves are augmented with an isLegal(Game) method to circumvent this
+ * difficulty.
+ * 
+ * In addition, to avoid the implementation of illegal moves declared legal, we
+ * do not allow classes outside this package to extend its Move class.
+ * 
+ * @author Fabian Pijcke
+ */
 public abstract class Move implements IMove<Board> {
+	
 	Move() {
 		// Package-visibility constructor; therefore only package classes can
 		// extend it, this avoids creation of moves applying illegal things to
 		// the board.
 	}
-	
+
+	/**
+	 * @param game
+	 * @return true if and only if the game rules allow this move.
+	 */
 	public abstract boolean isLegal(Game game);
+	
 }

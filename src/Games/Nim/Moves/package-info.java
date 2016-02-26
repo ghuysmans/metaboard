@@ -17,22 +17,7 @@
  along with MetaBoard. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package Games.Nim;
-
-import Board.Path.IPath;
-import Board.Path.PathCoordinate;
-
 /**
- * As the game of Nim involves only one token, we provide a facility to retrieve
- * the position of the token in constant time.
- * 
- * @author Fabian Pijcke
+ * @see Games.Nim.Moves.Move
  */
-public interface IBoard extends IPath<Token, PathCoordinate> {
-	
-	/**
-	 * @return the current position of the token.
-	 */
-	PathCoordinate getTokenPosition();
-	
-}
+package Games.Nim.Moves;

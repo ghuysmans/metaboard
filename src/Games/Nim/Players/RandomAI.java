@@ -27,10 +27,20 @@ import Games.Nim.Player;
 import Games.Nim.Moves.Move;
 import Games.Nim.Moves.MoveToken;
 
+/**
+ * This AI plays randomly, but ensures to play a valid move in the endgame.
+ * 
+ * @author Fabian Pijcke
+ */
 public class RandomAI extends Player {
 	
 	private Random randomizer;
 	
+	/**
+	 * Standard Player constructor.
+	 * 
+	 * @param avatar
+	 */
 	public RandomAI(NameAvatar avatar) {
 		super(avatar);
 		randomizer = new Random();

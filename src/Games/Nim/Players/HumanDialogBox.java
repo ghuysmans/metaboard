@@ -31,8 +31,18 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Alert.AlertType;
 
+/**
+ * Allows a human to play using a really basic GUI.
+ * 
+ * @author Fabian Pijcke
+ */
 public class HumanDialogBox extends Player {
-	
+
+	/**
+	 * Standard Player constructor.
+	 * 
+	 * @param avatar
+	 */
 	public HumanDialogBox(NameAvatar avatar) {
 		super(avatar);
 	}

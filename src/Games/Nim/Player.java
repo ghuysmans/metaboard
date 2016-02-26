@@ -23,35 +23,56 @@ import Core.IDecisionMaker;
 import Core.NameAvatar;
 import Games.Nim.Moves.Move;
 
+/**
+ * Implementation of a basic Nim player. The additional methods provide
+ * information on the state of the game. Classes extending this one juste have
+ * to implement the pickMove() and informWinners() methods.
+ * 
+ * Additionaly we ensure that players do not mess with their avatar once it has
+ * been created.
+ * 
+ * @author Fabian Pijcke
+ */
 public abstract class Player implements IDecisionMaker<IBoard, Move, NameAvatar> {
-	
+
 	private final NameAvatar avatar;
-	
+
 	private IBoard board;
 	private int maxLeap;
-	
+
+	/**
+	 * Creates a player the standard way.
+	 * 
+	 * @param avatar
+	 */
 	public Player(NameAvatar avatar) {
 		this.avatar = avatar;
 	}
-	
+
 	@Override
-	public NameAvatar getAvatar() {
+	public final NameAvatar getAvatar() {
 		return avatar;
 	}
-	
+
+	/**
+	 * @return the board.
+	 */
 	public IBoard getBoard() {
 		return board;
 	}
-	
+
+	/**
+	 * @return the maximum leap allowed.
+	 */
 	public int getMaxLeap() {
 		return maxLeap;
 	}
-	
+
 	@Override
 	public void informBoard(IBoard board) {
 		this.board = board;
 	}
-	
+
 	/**
 	 * Will be called at the beginning of a game.
 	 * 
@@ -60,5 +81,5 @@ public abstract class Player implements IDecisionMaker<IBoard, Move, NameAvatar>
 	public void informMaxLeap(int maxLeap) {
 		this.maxLeap = maxLeap;
 	}
-	
+
 }

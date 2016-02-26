@@ -23,20 +23,30 @@ import java.util.ArrayList;
 
 import Games.Nim.Player;
 
+/**
+ * Reflection mecanisms do not allow us to find all the classes implemented in a
+ * given package, or extending a given class. The classes can not register
+ * themselve statically as they will not be loaded unless they are needed.
+ * Another solution would have been to check the Games/Nim/Players directory for
+ * classes and to determine them using their name, but this seems unsafe and
+ * daunty. The solution we use is merely to store the classes in a list. Not
+ * very elegant but functional and easy.
+ * 
+ * Note that the terminal launcher does not need this as the classes are given
+ * as textual command-line arguments.
+ * 
+ * @author Fabian Pijcke
+ */
 public class PlayersList {
-	
-	public static ArrayList<Class<? extends Player>> playersList() {
-		ArrayList<Class<? extends Player>> list = playersListFX();
-		list.add(HumanConsole.class);
-		
-		return list;
-	}
-	
+
+	/**
+	 * @return the list of classes playable using a graphical interface.
+	 */
 	public static ArrayList<Class<? extends Player>> playersListFX() {
 		ArrayList<Class<? extends Player>> list = new ArrayList<>();
 		list.add(RandomAI.class);
 		list.add(HumanDialogBox.class);
-		
+
 		return list;
 	}
 }
