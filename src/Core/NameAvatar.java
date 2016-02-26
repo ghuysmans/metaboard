@@ -19,6 +19,21 @@
 
 package Core;
 
+/**
+ * In some games, like Chess, the players are de facto named (the first player
+ * is "white", the other one is "black"). But in most games, in particular when
+ * more than two players can take part in the game, it becomes necessary to name
+ * players, especially when some players can give up in the middle of the game.
+ * 
+ * This interface extends the avatars with a name for such cases.
+ * 
+ * @author Fabian Pijcke
+ */
 public interface NameAvatar extends Avatar {
+	
+	/**
+	 * @return the name of the avatar.
+	 */
 	String getName();
+	
 }
