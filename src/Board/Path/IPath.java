@@ -23,21 +23,23 @@ import Board.IBoardProxy;
 import Core.Piece;
 
 /**
- * Common interface to Path2D and PathProxy, meant to be passed to both the user (AI) and to the Game implementation.
+ * Common interface to Path and PathProxy, meant to be passed to both the user
+ * (AI) and to the Game implementation.
  * 
  * @author Fabian Pijcke
  * @param <P>
- * @param <C> A 1D (Path) Coordinate type.
+ * @param <C>
+ *            A 1D (Path) Coordinate type.
  */
 public interface IPath<P extends Piece, C extends PathCoordinate> extends IBoardProxy<P, C> {
 	/**
 	 * @return the length of the board.
 	 */
 	int getLength();
-	
+
 	/**
 	 * @param c
-	 * @return true if the coordinate belongs to the limits of the board. 
+	 * @return true if the coordinate belongs to the limits of the board.
 	 */
 	boolean has(C c);
 }

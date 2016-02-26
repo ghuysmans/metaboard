@@ -23,21 +23,27 @@ import Core.Piece;
 
 /**
  * The board contains the current state of the game.
- * All the informations moves have effect on must be handled by this class for the move class is given access only to the board of the game.
+ * 
+ * The board uses the Proxy design pattern. That is, a subset of the methods
+ * defined here are also defined in a proxy class, which is meant to be given to
+ * the players. The complete board is meant to be used by the game engine, which
+ * needs to be able to alter its state directly.
  * 
  * @author Fabian Pijcke
  * @param <P>
+ *            The class of pieces that will be put on the board.
  * @param <C>
+ *            The coordinates used on the board.
  */
 public interface IBoard<P extends Piece, C extends ICoordinate> extends IBoardProxy<P, C> {
-    
+
 	/**
-	 * Puts the given piece at the given coordinate.
-	 * The behaviour is not specified if the piece was already present on the board.
+	 * Puts the given piece at the given coordinate. The behaviour is not
+	 * specified if the piece was already present on the board.
 	 * 
 	 * @param coord
 	 * @param piece
 	 */
-    void setPieceAt(C coord, P piece);
+	void setPieceAt(C coord, P piece);
 
 }

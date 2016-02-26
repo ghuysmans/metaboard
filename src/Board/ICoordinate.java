@@ -20,8 +20,11 @@
 package Board;
 
 /**
+ * Coordinates structure depends on the Board shape.
+ * 
  * @author Fabian Pijcke
  */
 public interface ICoordinate {
-    
+	@Override
+	String toString();
 }

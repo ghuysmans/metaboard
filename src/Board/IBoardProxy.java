@@ -27,13 +27,12 @@ import Core.Piece;
 import Utils.Consumer;
 
 /**
- * The board is the main component of a board game. It must provide access to
- * the pieces involved in the game and give informations about the playable
- * area. It should not be used to alter the state of the game, it is just a view
- * over DataBoard, which is not given to DecisionMakers.
+ * The board proxy is the main component of a board game from the player point
+ * of view. It must provide access to the pieces involved in the game and give
+ * informations about the playable area. It should not be used to alter the
+ * state of the game, it is just a view over Board, which is not given to
+ * DecisionMakers.
  * 
- * BoardProxy is designed to use the Proxy pattern over Board.
- *
  * @author Fabian Pijcke
  * @param <P>
  * @param <C>
@@ -44,32 +43,32 @@ public interface IBoardProxy<P extends Piece, C extends ICoordinate> {
 	 * @param coord
 	 * @return the piece at coordinate coord, if any, or null otherwise.
 	 */
-    P getPieceAt(C coord);
+	P getPieceAt(C coord);
 
-    /**
-     * Applies c to any piece on the board.
-     * 
-     * @param c
-     */
-    void forEach(Consumer<P> c);
-    
-    /**
-     * @param predicate
-     * @return a list of the pieces on the board satisfying predicate.
-     */
-    default List<P> getPieces(Predicate<P> predicate) {
-        List<P> pieces = getPieces();
-        pieces.removeIf(predicate.negate());
-        return pieces;
-    }
+	/**
+	 * Applies c to any piece on the board.
+	 * 
+	 * @param c
+	 */
+	void forEach(Consumer<P> c);
 
-    /**
-     * @return a list of the pieces on the board.
-     */
-    default List<P> getPieces() {
-        List<P> pieces = new ArrayList<>();
-        forEach((P piece) -> pieces.add(piece));
-        return pieces;
-    }
-    
+	/**
+	 * @param predicate
+	 * @return a list of the pieces on the board satisfying predicate.
+	 */
+	default List<P> getPieces(Predicate<P> predicate) {
+		List<P> pieces = getPieces();
+		pieces.removeIf(predicate.negate());
+		return pieces;
+	}
+
+	/**
+	 * @return a list of the pieces on the board.
+	 */
+	default List<P> getPieces() {
+		List<P> pieces = new ArrayList<>();
+		forEach((P piece) -> pieces.add(piece));
+		return pieces;
+	}
+
 }
