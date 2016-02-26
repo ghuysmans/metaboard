@@ -34,6 +34,7 @@ public class PlayersList {
 	
 	public static ArrayList<Class<? extends Player>> playersListFX() {
 		ArrayList<Class<? extends Player>> list = new ArrayList<>();
+		list.add(RandomAI.class);
 		list.add(HumanDialogBox.class);
 		
 		return list;
