@@ -46,6 +46,7 @@ public class PlayersList {
 		ArrayList<Class<? extends Player>> list = new ArrayList<>();
 		list.add(RandomAI.class);
 		list.add(HumanDialogBox.class);
+		list.add(WinnerAI.class);
 
 		return list;
 	}
