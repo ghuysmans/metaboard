@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by florentdelgrange on 20/03/16.
  */
-public class CooperativeAI extends RandomAI{
+public class CooperativeAI extends Player {
 
     /**
      * Creates a cooperative AI.
@@ -28,7 +28,7 @@ public class CooperativeAI extends RandomAI{
         int maxLeap = getMaxLeap();
         int position = getBoard().getTokenPosition().getI();
         if (position % (maxLeap + 1) == 0 || (position % (maxLeap + 1) == position))
-            return super.pickMove();
+            return new MoveToken(1);
         else if (((position + 1) % (maxLeap + 1)) == 0)
             return new MoveToken((position%(maxLeap+1))-1);
         else
