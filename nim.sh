@@ -1,2 +1,2 @@
 #!/bin/sh
-./nim.py 15 2 |dot -Tpng>nim.png
+./nim.py 12 3 |dot -Tpng>nim.png
