@@ -59,8 +59,9 @@ La figure~\ref{nim12} représente l'évolution d'un jeu de Nim avec $m=12$ et
 $n=3$. Nous considérons pour cet exemple, par souci de lisibilité, que lorsque
 l'IA ne peut pas jouer de coup gagnant, elle ne retire qu'un pion au lieu de
 jouer aléatoirement. Le parcours correspondant à cette IA est décrit par le
-chemin décrit en {\color{red} rouge}. Les sommets de ce graphe représentent le
-nombre de pions restants et les arcs, le nombre de pions que l'IA retire. \\
+chemin tracé en {\color{red} rouge} (trait plein).
+Les sommets de ce graphe représentent le
+nombre de pions restants et les arcs, le nombre de pions que l'IA retire.
 L'IA gagnante va donc <<~bloquer~>> l'adversaire à chaque tour, l'empêchant
 d'arriver au cas où $m \mod (m+1) = n$ (le cas où il reste au plus autant de
 jetons que de jetons maximum qu'il est possible de retirer). Lorsque l'IA
@@ -84,7 +85,7 @@ jetons, $x$ étant défini de la façon suivante :
 
 Pour illustrer cette propriété, nous nous référons à nouveau à la figure
 ~\ref{nim12}. Le parcours correspondant à cette IA est décrit par le chemin
-décrit en {\color{blue} bleu}.
+tracé en {\color{blue} bleu} (trait discontinu).
 
 Dans le cas \eqref{s1}, par le fait que
 $m \mod (n+1)=0$, n'importe quel coup porté par le joueur jouant au tour
