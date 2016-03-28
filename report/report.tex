@@ -62,8 +62,9 @@ jouer aléatoirement. Le parcours correspondant à cette IA est décrit par le
 chemin tracé en {\color{red} rouge} (trait plein).
 Les sommets de ce graphe représentent le
 nombre de pions restants et les arcs, le nombre de pions que l'IA retire.
+
 L'IA gagnante va donc <<~bloquer~>> l'adversaire à chaque tour, l'empêchant
-d'arriver au cas où $m \mod (m+1) = n$ (le cas où il reste au plus autant de
+d'arriver au cas où $m \mod (n+1) = m$ (le cas où il reste au plus autant de
 jetons que de jetons maximum qu'il est possible de retirer). Lorsque l'IA
 gagnante tombe dans ce cas de base, elle gagne et elle y parviendra
 obligatoirement la première dans le cas d'un jeu de Nim à 2 joueurs).
@@ -89,7 +90,7 @@ tracé en {\color{blue} bleu} (trait discontinu).
 
 Dans le cas \eqref{s1}, par le fait que
 $m \mod (n+1)=0$, n'importe quel coup porté par le joueur jouant au tour
-suivant aura la possibilité d'être optimal. De plus, si $m \mod (n+1) = n$, alors
+suivant aura la possibilité d'être optimal. De plus, si $m \mod (n+1) = m$, alors
 on peut également jouer aléatoirement car cela signifie qu'il reste au plus $n$
 pions et donc que l'IA coopérative permet soit au joueur suivant de gagner, soit
 gagne en retirant le nombre de pions restants.
