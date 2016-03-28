@@ -34,19 +34,18 @@ coup gagnant. Un coup gagnant correspond au moment dans le jeu où il reste, au
 plus, autant de pions que le nombre de pions qu'on a le droit de déplacer.
 
 Soient $m$, le nombre de pions restant et $n$ le nombre de pions maximum qu'on
-est autorisé de déplacer. Nous nous trouvons dans une telle situation \ssi
+est autorisé à déplacer. Nous nous trouvons dans une telle situation \ssi
 \[m \mod n = n\]
 
 Notre IA joue aléatoirement jusqu'à atteindre cet objectif.
-Dès que c'est le cas, elle retire $n$ pions et gagne.
+Dès que c'est le cas, elle retire $n$~pions et gagne la partie.
 
 \section{IA gagnante}
 Soient $m$, le nombre de pions restants et $n$ le nombre de pions maximum qu'on
-est autorisé de déplacer. Un coup est dit optimal \ssi à chaque tour,
+est autorisé à déplacer. Un coup est dit optimal \ssi à chaque tour,
 celui-ci correspond à $m \mod (n+1)$ à condition que $m \mod (n+1) \neq 0$.
 Dans le cas contraire, l'IA ne sait pas jouer de manière optimale et joue
 aléatoirement.
-
 Afin d'illustrer cette propriété, nous allons utiliser un
 graphe que nous avons généré par programme.
 \begin{figure}
@@ -57,7 +56,7 @@ graphe que nous avons généré par programme.
 
 La figure~\ref{nim12} représente l'évolution d'un jeu de Nim avec $m=12$ et
 $n=3$. Nous considérons pour cet exemple, par souci de lisibilité, que lorsque
-l'IA ne peut pas jouer de coup gagnant, elle ne retire qu'un pion à la place de
+l'IA ne peut pas jouer de coup gagnant, elle ne retire qu'un pion au lieu de
 jouer aléatoirement. Le parcours correspondant à cette IA est décrit par le
 chemin décrit en {\color{red} rouge}. Les sommets de ce graphe représentent le
 nombre de pions restants et les arcs, le nombre de pions que l'IA retire. \\
@@ -68,11 +67,11 @@ gagnante tombe dans ce cas de base, elle gagne et elle y parviendra
 obligatoirement la première dans le cas d'un jeu de Nim à 2 joueurs).
 
 \section{IA coopérative}
-Deux joueurs ligués doivent être surs de gagner c'est à dire que le joueur 1 ou
+Deux joueurs ligués doivent être sûrs de gagner c'est-à-dire que le joueur 1 ou
 le joueur 2 doit gagner la partie. Cette IA a pour but de permettre au joueur
 qui joue au tour suivant de toujours avoir la possibilité de faire un coup
 optimal. Soient $m$, le nombre de pions restants et n le nombre de pions maximum
-qu'on est autorisé de déplacer. L'IA permet au joueur suivant de faire un coup
+qu'on est autorisé à déplacer. L'IA permet au joueur suivant de faire un coup
 optimal (comme défini à la section précédente) \ssi l'IA retire $x$
 jetons, $x$ étant défini de la façon suivante :
 \begin{align}
@@ -95,13 +94,13 @@ gagne en retirant le nombre de pions restants.
 
 Le cas \eqref{s2}, correspond au cas où, si l'IA retire 1 jeton, celle-ci bloque
 le joueur suivant et lui interdit de jouer de manière optimale.
-L'IA retire alors 2 jetons pour assurer au joueur suivant la possibilité de
+L'IA retire alors 2~jetons pour assurer au joueur suivant la possibilité de
 placer un coup optimal.
 
 Finalement, le cas \eqref{s3} ne nous
 permet pas de jouer aléatoirement dans $[1, n]$ car on pourrait encore une fois
 bloquer le joueur suivant. Cependant, il est tout à fait possible de retirer un
-jeton pour être sur que le joueur suivant soit sûr de jouer de manière optimale.
+jeton pour garantir au joueur suivant de jouer de manière optimale.
 
 Il est donc trivial que son association avec l'IA gagnante lui garantira
 la victoire lors de parties de 3 joueurs avec $n \geq 2$.  En effet,
@@ -109,9 +108,9 @@ l'IA coopérative permettra à chaque tour à l'IA gagnante de bloquer
 l'adversaire.
 
 \section{Remarque}
-Nous aurions voulu créer qu'une seule IA capable de décider d'aider le joueur
-suivant si il est dans son équipe ou d'attaquer celui-ci dans le cas où le
-joueur suivant est un adversaire, mais le framework ne permet malheureusement
+Nous n'aurions voulu créer qu'une seule IA capable de décider d'aider le joueur
+suivant si il est dans son équipe ou d'attaquer celui-ci dans le cas où c'est
+un adversaire, mais le framework ne permet malheureusement
 pas à un joueur de déterminer qui joue avec lui.
 
 \end{document}
