@@ -36,7 +36,7 @@ plus, autant de pions que le nombre de pions qu'on a le droit de déplacer.
 
 Soient $m$, le nombre de pions restant et $n$ le nombre de pions maximum qu'on
 est autorisé à déplacer. Nous nous trouvons dans une situation gagnante \ssi
-\[m \mod n = n\]
+\[m \mod (n+1) = m \Leftrightarrow m \leq n\]
 
 Notre IA joue aléatoirement jusqu'à atteindre cet objectif.
 Dès que c'est le cas, elle retire $n$~pions et gagne la partie.
