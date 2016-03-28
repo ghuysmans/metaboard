@@ -66,8 +66,11 @@ nombre de pions restants et les arcs, le nombre de pions que l'IA retire.
 L'IA gagnante va donc <<~bloquer~>> l'adversaire à chaque tour, l'empêchant
 d'arriver au cas où $m \mod (n+1) = m$ (le cas où il reste au plus autant de
 jetons que de jetons maximum qu'il est possible de retirer). Lorsque l'IA
-gagnante tombe dans ce cas de base, elle gagne et elle y parviendra
-obligatoirement la première dans le cas d'un jeu de Nim à 2 joueurs).
+gagnante tombe dans ce cas de base, elle gagne.
+
+Ce ne sera pas toujours possible puisque dans le cas trivial (dans l'exemple)
+où elle commence avec 4 jetons, elle pourra en laisser entre 1 et 3
+à son adversaire qui gagnera dans tous les cas.
 
 \section{IA coopérative}
 Deux joueurs ligués doivent être sûrs de gagner c'est-à-dire que le joueur 1 ou
