@@ -39,10 +39,10 @@ est autorisé à déplacer. Nous nous trouvons dans une situation gagnante \ssi
 \[m \mod (n+1) = m \Leftrightarrow m \leq n\]
 
 Notre IA joue aléatoirement jusqu'à atteindre cet objectif.
-Dès que c'est le cas, elle retire $n$~pions et gagne la partie.
+Dès que c'est le cas, elle retire les $m$~pions et gagne la partie.
 
 \section{IA gagnante}
-Soient $m$, le nombre de pions restants et $n$ le nombre de pions maximum qu'on
+Soient $m$, le nombre de pions restant et $n$ le nombre de pions maximum qu'on
 est autorisé à déplacer. Un coup est dit optimal \ssi à chaque tour,
 celui-ci correspond à $m \mod (n+1)$ à condition que $m \mod (n+1) \neq 0$.
 Dans le cas contraire, l'IA ne sait pas jouer de manière optimale et joue
@@ -61,7 +61,7 @@ l'IA ne peut pas jouer de coup gagnant, elle ne retire qu'un pion au lieu de
 jouer aléatoirement. Le parcours correspondant à cette IA est décrit par le
 chemin tracé en {\color{red} rouge} (trait plein).
 Les sommets de ce graphe représentent le
-nombre de pions restants et les arcs, le nombre de pions que l'IA retire.
+nombre de pions restant et les arcs, le nombre de pions que l'IA retire.
 
 L'IA gagnante va donc <<~bloquer~>> l'adversaire à chaque tour, l'empêchant
 d'arriver au cas où $m \mod (n+1) = m$ (le cas où il reste au plus autant de
@@ -76,13 +76,13 @@ où elle commence avec 4 jetons, elle pourra en laisser entre 1 et 3
 Deux joueurs ligués doivent être sûrs de gagner c'est-à-dire que le joueur 1 ou
 le joueur 2 doit gagner la partie. Cette IA a pour but de permettre au joueur
 qui joue au tour suivant de toujours avoir la possibilité de faire un coup
-optimal. Soient $m$, le nombre de pions restants et n le nombre de pions maximum
+optimal. Soient $m$, le nombre de pions restant et n le nombre de pions maximum
 qu'on est autorisé à déplacer. L'IA permet au joueur suivant de faire un coup
 optimal (comme défini à la section précédente) \ssi l'IA retire $x$
 jetons, $x$ étant défini de la façon suivante :
 \begin{align}
 	x &\in [1, min(n, m)] &&
-	\text{si } m \mod (n+1) = 0 \text{ ou } m \mod (n+1) = n \label{s1} \\
+	\text{si } m \mod (n+1) = 0 \text{ ou } m \mod (n+1) = m \label{s1} \\
 	x &= 2 && \text{si } (m-1) \mod (n+1) = 0 \label{s2} \\
 	x &= 1 && \text{sinon} \label{s3}
 \end{align}
